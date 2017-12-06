@@ -1,0 +1,71 @@
+<div class="aw-container-wrap" ng-app="createApp" ng-controller="createCtrl">
+    <div class="container aw-publish">
+        <div class="row">
+            <div class="aw-content-wrap clearfix">
+                <div class="col-sm-12 col-md-9 aw-main-content">
+                    <ul class="nav nav-tabs aw-nav-tabs active">
+                        <h2 class="hidden-xs">
+                            <i class="fa fa-credit-card"></i>
+                            发起
+                        </h2>
+                    </ul>
+                    <!--问题的主题-->
+                    <form action="" method="post" name="createForm" ng-submit="postForm($event)">
+                        <div class="aw-mod aw-mod-publish">
+                            <div class="mod-body">
+                                <h3>问题的分类</h3>
+                                <div class="aw-publish-title">
+                                    <div>
+                                        <select class="form-control" name="category" ng-model="data.category" required>
+                                            <option value="">请选择</option>
+                                            <% categorys.forEach(function(category){  %>
+                                            <option value="<%= category[0] %>"> <%= category[1] %> </option>
+                                            <% }) %>
+                                        </select>
+                                        <div style="height: 20px">
+                                            <span ng-cloak ng-show="createForm.category.$pristine || createForm.category.$invalid " class="text-danger">
+                                            <i class="glyphicon glyphicon-info-sign"></i>请正确选择版块
+                                        </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h3>问题的标题</h3>
+                                <div class="aw-publish-title">
+                                    <div>
+                                        <input type="text" name="title" ng-model="data.title" ng-minlength="10" ng-maxlength="50" placeholder="问题标题..." class="form-control">
+                                        <div class="aw-publish-suggest-question hide">
+                                            <p class="text-color-999">你的问题可能已经有答案了..</p>
+                                            <ul class="aw-dropdown-list"></ul>
+                                        </div>
+                                        <div style="height: 20px">
+                                            <span ng-cloak ng-show="createForm.title.$dirty && createForm.title.$invalid" class="text-danger">
+                                            <i class="glyphicon glyphicon-info-sign"></i>问题的长度不小于10，不大于50
+                                        </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h3>问题补充:</h3>
+                                <div class="aw-mod aw-editor-box">
+                                    <div class="mod-head">
+                                        <textarea id="question"></textarea>
+                                    </div>
+
+                                    <div class="mod-body">
+                                        <div style="height:20px;">
+                                        <span ng-cloak ng-show="isShow"  class="pull-left text-danger" id="question_detail_message">
+                                            <i class="glyphicon glyphicon-info-sign"></i>内容不能为空
+                                        </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mod-footer clearfix">
+                                <button class="btn btn-large btn-success" type="submit" ng-disabled="createForm.$invalid || isShow">发布文章</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

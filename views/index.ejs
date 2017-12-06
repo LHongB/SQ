@@ -1,0 +1,161 @@
+<div class="aw-container-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="aw-content-wrap clearfix">
+                <div class="col-sm-12 col-md-9 aw-main-content">
+                    <!--文章的检索-->
+                    <ul class="nav nav-tabs aw-nav-tabs active hidden-xs">
+
+                        <% categorys.forEach( (category) =>{  %>
+                        <li class="<%= cate === category[0] ? 'active' : '' %>" ><a href="/?category=<%= category[0] %>"> <%= category[1] %> </a></li>
+                        <% }) %>
+
+                        <h2 class="hidden-xs"><i class="fa fa-bars"></i> 发现</h2>
+                    </ul>
+                    <!--文章的检索-->
+                    <!--文章列表-->
+                    <div class="aw-mod aw-explore-list">
+                        <div class="mod-body">
+                            <div class="aw-common-list">
+
+                                <% if( articles && articles.length > 0 ){ %>
+                                <% articles.forEach( (article) =>{ %>
+                                <div class="aw-item">
+                                    <a class="aw-user-name hidden-xs" href="#"><img src="<%= article.author.avatar %>"></a>
+                                    <div class="aw-question-content">
+                                        <h4>
+                                            <a href="/question/<%= article._id %>"> <%= article.title %> </a>
+                                            <span class="aw-user-name" style="background-color:#99cfff;color:white; padding:2px 5px;"> <%= article.categoryName %> </span>
+                                        </h4>
+                                        <a href="/question/<%= article._id %>#reply_form"  class="pull-right text-color-999">回复</a>
+                                        <p>
+                                            <a href="/user/<%= article.author.name %>" class="aw-user-name"> <%= article.author.name %> </a>
+                                            <span class="text-color-999">
+                                                发起了问题  • <%= article.reply_num %> 个回复 • <%= article.click_num %> 次浏览 • <%= article.create_time_ago() %>
+                                            </span>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <% }) %>
+                                <% } %>
+
+                            </div>
+                        </div>
+                        <div class="mod-footer">
+                            <div class="page-control">
+                                <ul class="pagination pull-right">
+                                    <li class="active"><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">4</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--侧边栏-->
+                <div class="col-sm-12 col-md-3 aw-side-bar hidden-xs hidden-sm">
+                    <% if(userInfo){ %>
+                    <div class="aw-mod">
+                        <div class="mod-head">
+                            <h3>个人信息</h3>
+                        </div>
+                        <div class="mod-body">
+                            <dl>
+                                <dt class="pull-left aw-border-radius-5">
+                                    <a href="/user/<%= userInfo.name %>"><img src="<%= userInfo.avatar %>"></a>
+                                </dt>
+                                <dd class="pull-left">
+                                    <a class="aw-user-name" href="/user/as1122">
+                                        <%= userInfo.name %>
+                                    </a>
+                                    <a href="/user/as1122" class="pull-right">更多</a>
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="mod-footer">
+                            <%= userInfo.motto %>
+                        </div>
+                    </div>
+                    <% } %>
+                    <div class="aw-mod aw-text-align-justify">
+                        <div class="mod-head">
+                            <a href="#" class="pull-right">更多</a>
+                            <h3>热门用户</h3>
+                        </div>
+                        <div class="mod-body">
+                            <dl>
+                                <dt class="pull-left aw-border-radius-5">
+                                    <a href="#"><img src="/images/avatar-max-img.png"></a>
+                                </dt>
+                                <dd class="pull-left">
+                                    <a href="#" class="aw-user-name">李志远</a>
+                                    <p class="signature"></p>
+                                    <p>
+                                        <b>0</b>个问题
+                                        <b>0</b>次赞同
+                                    </p>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt class="pull-left aw-border-radius-5">
+                                    <a href="#"><img src="/images/avatar-max-img.png"></a>
+                                </dt>
+                                <dd class="pull-left">
+                                    <a href="#" class="aw-user-name">李志远</a>
+                                    <p class="signature"></p>
+                                    <p>
+                                        <b>0</b>个问题
+                                        <b>0</b>次赞同
+                                    </p>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt class="pull-left aw-border-radius-5">
+                                    <a href="#"><img src="/images/avatar-max-img.png"></a>
+                                </dt>
+                                <dd class="pull-left">
+                                    <a href="#" class="aw-user-name">李志远</a>
+                                    <p class="signature"></p>
+                                    <p>
+                                        <b>0</b>个问题
+                                        <b>0</b>次赞同
+                                    </p>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt class="pull-left aw-border-radius-5">
+                                    <a href="#"><img src="/images/avatar-max-img.png"></a>
+                                </dt>
+                                <dd class="pull-left">
+                                    <a href="#" class="aw-user-name">李志远</a>
+                                    <p class="signature"></p>
+                                    <p>
+                                        <b>0</b>个问题
+                                        <b>0</b>次赞同
+                                    </p>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt class="pull-left aw-border-radius-5">
+                                    <a href="#"><img src="/images/avatar-max-img.png"></a>
+                                </dt>
+                                <dd class="pull-left">
+                                    <a href="#" class="aw-user-name">李志远</a>
+                                    <p class="signature"></p>
+                                    <p>
+                                        <b>0</b>个问题
+                                        <b>0</b>次赞同
+                                    </p>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+<div class="aw-container-wrap" ng-app="replyApp">
+    <div class="container">
+        <div class="row">
+            <div class="aw-content-wrap clearfix">
+
+                <div class="col-sm-12 col-md-9 aw-main-content">
+                    <!-- 问题主体内容 -->
+                    <% include common/content.ejs %>
+                    <!-- 一级回复内容显示 -->
+                    <% include common/reply.ejs %>
+                    <!--编辑器-->
+                    <% include common/edit.ejs %>
+                </div>
+                <div class="col-md-3 aw-side-bar hidden-xs hidden-sm">
+                    <!--个人信息-->
+                    <div class="aw-mod">
+                        <div class="mod-head">
+                            <h3>发起人</h3>
+                        </div>
+                        <div class="mod-body">
+                            <dl>
+                                <dt class="pull-left aw-border-radius-5">
+                                    <a href="#"><img src="/images/avatar-max-img.png"></a>
+                                </dt>
+                                <dd class="pull-left">
+                                    <a class="aw-user-name" href="#">李志远</a>
+                                    <a class="pull-right">关注</a>
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="mod-footer">
+                            这家伙很懒。。什么都没有留下...
+                        </div>
+                    </div>
+                    <!--相关问题-->
+                    <div class="aw-mod">
+                        <div class="mod-head">
+                            <h3>相关问题</h3>
+                        </div>
+                        <div class="mod-body font-size-12">
+                            <ul>
+                                <li>
+                                    <a href="#">如何实现多张图片的垂直居中效果</a>
+                                </li>
+                                <li>
+                                    <a href="#">如何实现多张图片的垂直居中效果</a>
+                                </li>
+                                <li>
+                                    <a href="#">如何实现多张图片的垂直居中效果</a>
+                                </li>
+                                <li>
+                                    <a href="#">如何实现多张图片的垂直居中效果</a>
+                                </li>
+                                <li>
+                                    <a href="#">如何实现多张图片的垂直居中效果</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--其他的版块-->
+                    <div class="aw-mod">
+                        <div class="mod-head">
+                            <h3>其他的板块</h3>
+                        </div>
+                        <div class="mod-body">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+
+</script>

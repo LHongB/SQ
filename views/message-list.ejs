@@ -1,0 +1,137 @@
+<div class="aw-container-wrap ng-scope" ng-app="messageApp" ng-controller="messageCtrl">
+    <div class="container">
+        <div class="row">
+            <div class="aw-content-wrap clearfix">
+                <!--侧边栏-->
+                <div class="col-sm-12 col-md-9 aw-main-content">
+                    <!--tab切换-->
+                    <ul class="nav nav-tabs aw-nav-tabs active hidden-xs">
+                        <li class="">
+                            <a href="#read" id="page_read" data-toggle="tab">已读消息</a>
+                        </li>
+                        <li class="active">
+                            <a href="#noread" id="page_noread" data-toggle="tab">未读消息</a>
+                        </li>
+                        <h2 class="pull-right">
+                            <i class="fa fa-bell-o"></i>
+                            消息
+                        </h2>
+                    </ul>
+                    <div class="aw-user-center-tab">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="noread">
+                                <div class="aw-mod">
+                                    <div class="mod-head">
+
+                                        <h3>
+                                            <a ng-click="readAll($event)" class="btn  btn-success">全部已读</a>
+                                        </h3>
+
+                                    </div>
+                                    <div class="mod-body">
+
+                                        <% if(noReadMsgs && noReadMsgs.length > 0){ %>
+
+                                        <% noReadMsgs.forEach( (noReadMsg, index) =>{ %>
+
+
+                                        <% if( noReadMsg.atType === 'at' ){ %>
+                                        <div class="aw-item" id="<%= index %>" message_id="<%= noReadMsg._id %>">
+                                            <p>
+                                                        <span class="pull-right text-color-999">
+                                                            <a ng-click="readOne($event)" class="btn btn-mini btn-primary">
+                                                                确认已读
+                                                            </a>
+                                                        </span>
+
+                                                <!--谁在某篇文章中提到了你-->
+                                                <em class="pull-left">
+                                                    <a href="/user/<%= noReadMsg.author_id.name%>" class="aw-user-name"> <%= noReadMsg.author_id.name%> </a>
+                                                    在文章中提到了你
+                                                </em>
+
+                                                <a  class="aw-hide-txt" href="/question/<%= noReadMsg.article_id._id %>"> <%= noReadMsg.article_id.title %> </a>
+
+                                            </p>
+                                        </div>
+                                        <% } %>
+                                        <% if( noReadMsg.atType === 'replyAt' ){ %>
+                                        <div class="aw-item" id="<%= index %>" message_id="<%= noReadMsg._id %>">
+                                            <p>
+                                                        <span class="pull-right text-color-999">
+                                                            <a  ng-click="readOne($event)" class="btn btn-mini btn-primary">
+                                                                确认已读
+                                                            </a>
+                                                        </span>
+                                                <em class="pull-left">
+                                                    <a href="/user/<%= noReadMsg.author_id.name%>" class="aw-user-name"> <%= noReadMsg.author_id.name%> </a>
+                                                    在文章的留言中提到了你
+                                                </em>
+                                                <a  class="aw-hide-txt" href="/question/<%= noReadMsg.article_id._id %>"> <%= noReadMsg.article_id.title %> </a>
+                                            </p>
+                                        </div>
+                                        <% } %>
+                                        <% if( noReadMsg.atType === 'reply' ){ %>
+                                        <div class="aw-item" id="<%= index %>" message_id="<%= noReadMsg._id %>">
+                                            <p>
+                                                        <span class="pull-right text-color-999">
+                                                            <a  ng-click="readOne($event)" class="btn btn-mini btn-primary">
+                                                                确认已读
+                                                            </a>
+                                                        </span>
+                                                <em class="pull-left">
+                                                    <a href="/user/<%= noReadMsg.author_id.name%>" class="aw-user-name"> <%= noReadMsg.author_id.name%> </a>
+                                                    在文章中给你留言了
+                                                </em>
+                                                <a  class="aw-hide-txt" href="/question/<%= noReadMsg.article_id._id %>"> <%= noReadMsg.article_id.title %> </a>
+                                            </p>
+                                        </div>
+                                        <% } %>
+
+
+
+                                        <% }) %>
+
+                                        <% } %>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="read">
+                                <div class="aw-mod">
+                                    <div class="mod-head">
+                                        <h3>已读消息</h3>
+                                    </div>
+                                    <div class="mod-body">
+
+                                        <% if(  readMsgs && readMsgs.length > 0 ){ %>
+
+                                        <div class="aw-item" id="0" message_id="rkg5VV5uoW">
+                                            <p>
+                                                <span class="pull-right text-color-999"></span>
+                                                <em class="pull-left">
+                                                    <a href="/user/as1111" class="aw-user-name">as1111</a>
+                                                    回复了你的问题
+                                                </em>
+                                                <a href="/question/r1o4vgLjb#H1cNEcuib" class="aw-hide-txt">
+                                                    eqt3qteqt3qteqt
+                                                </a>
+                                            </p>
+                                        </div>
+
+                                        <% } %>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--side-bar-->
+                <div class="col-md-3 aw-side-bar hidden-xs hidden-sm">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

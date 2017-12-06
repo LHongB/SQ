@@ -1,0 +1,51 @@
+
+<% if( comments && comments.length > 0){ %>
+<% comments.forEach( (comment ) =>{ %>
+
+<div class="comment-item" id="<%= comment._id %>" target="<%= comment.author.name %>">
+    <div class="mod-head">
+        <a class="aw-user-img aw-border-radius-5 pull-right" href="/user/<%= comment.author.name %>">
+            <img src="<%= comment.author.avatar %>">
+        </a>
+        <div class="title">
+            <p>
+                <a class="aw-user-name" href="/user/<%= comment.author.name %>">
+                    <%= comment.author.name %>
+                </a>
+
+                <% if( comment.comment_author_id ){ %>
+                    回复
+                <a class="aw-user-name" href="/user/<%= comment.comment_author_id %>">
+                    <%= comment.comment_author_id %>
+                </a>
+                <% } %>
+
+            </p>
+        </div>
+    </div>
+    <div class="mod-body clearfix">
+        <div class="markitup-box">
+            <div class="markdown-text"><p>  <%=  comment.content  %> </p>
+            </div>
+        </div>
+    </div>
+    <div class="mod-footer">
+        <span class="text-color-999 pull-right"> <%= comment.create_time_ago() %></span>
+        <span class="operate">
+            <a class="agree">
+                <i class="fa fa-thumbs-o-up"></i>
+                <b class="count">0</b>
+            </a>
+        </span>
+        <span class="operate">
+            <a href="javascript:void(0)" class="aw-add-comment comment_btn">
+                <i class="fa fa-commenting-o"></i>
+                回复
+            </a>
+        </span>
+    </div>
+</div>
+
+<% }) %>
+
+<% } %>
